@@ -21,6 +21,14 @@ async function bootstrap() {
         .setTitle('Backend template 2024')
         .setDescription('By @ColorKat')
         .setVersion('1.0')
+        .addBearerAuth(
+            {
+                type: 'http',
+                scheme: 'bearer',
+                bearerFormat: 'JWT',
+            },
+            'access-token',
+        )
         .build();
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup('docs', app, document);

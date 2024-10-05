@@ -1,2 +1,2 @@
-export * from './strategies';
 export * from './interseptors';
+export * from './filters';
