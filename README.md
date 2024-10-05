@@ -66,3 +66,17 @@ api запросы, которые IDE может выполнять сама.
 В случае, если в запросе нет каких-то полей или у них неверный тип, то 
 nestjs выбросит ошибку.
 
+### Форматирование ответа от сервера
+Я использую `common/interseptors/response.interseptor.ts` и `common/filters/http-exception.filter.ts`,
+чтобы преобразовать все api ответы в один конкретный формат:
+```typescript
+const response = {
+    result   : 'true or false',
+    status   : 'Http status code (number)',
+    data     : 'Данные, которые вернул контроллер',
+    error    : 'Сообщение об ошибке. В том числе из валидатора',
+    timestamp: 'Время запроса',
+    path     : 'Endpoint, по которому совершен запрос'
+}
+```
+
