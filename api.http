@@ -1,0 +1,10 @@
+### Commentar
+# GET http://localhost:3000/api/v1/users
+PATCH http://localhost:3000/api/v1/users/edit
+Content-Type: application/json;charset=utf-8
+Authorization: 123
+
+{
+  "id": 1,
+  "name": "coco_shanel"
+}
