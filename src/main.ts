@@ -2,12 +2,16 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import { ValidationPipe } from "@nestjs/common";
+import { HttpExceptionFilter, ResponseInterceptor } from "@/common";
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
 
     // Global prefix for api version control
     app.setGlobalPrefix('api/v1');
+
+    app.useGlobalInterceptors(new ResponseInterceptor()); // Format response
+    app.useGlobalFilters(new HttpExceptionFilter());      // Format error response
 
     // CORS setup
     app.enableCors({

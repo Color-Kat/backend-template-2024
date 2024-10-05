@@ -6,8 +6,7 @@ export class AppService {
     constructor(private readonly prisma: PrismaService) {}
 
     async getPing(): Promise<{
-        status: string;
-        code: number;
+        status: number;
         responseTime: string;
         dbResponseTime: string
     }> {
@@ -23,8 +22,7 @@ export class AppService {
             const duration = Date.now() - startTime;
 
             return {
-                status: 'ok',
-                code: 200,
+                status: 200,
                 responseTime: `${duration}ms`,
                 dbResponseTime: `${dbDuration}ms`,
             };
